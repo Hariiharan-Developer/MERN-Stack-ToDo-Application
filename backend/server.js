@@ -4,7 +4,7 @@ const connectDB = require('./config/cofig')
 const app = express()
 const dotenv  =require('dotenv').config()
 
-
+app.use(express.json())
 connectDB()
 app.use('/api/todo',router)
 app.listen(process.env.PORT,()=>{
