@@ -3,7 +3,10 @@ const router = require('./route/todo.router')
 const connectDB = require('./config/cofig')
 const app = express()
 const dotenv  =require('dotenv').config()
+const cors =require('cors')
 
+
+app.use(cors())
 app.use(express.json())
 connectDB()
 app.use('/api/todo',router)
