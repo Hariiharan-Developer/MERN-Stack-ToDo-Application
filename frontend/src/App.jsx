@@ -174,7 +174,7 @@ const App = () => {
               {editId ===u._id ?
               <input value={editTitle}
               onChange={(e)=>setEditTitle(e.target.value)}
-              style={{color:'white',backgroundColor:'transparent',border: 'none',borderBottom: '2px solid orange', outline: 'none',padding: '5px 0',borderRadius:0}} 
+              style={{width:'100%',color:'white',backgroundColor:'transparent',border: 'none',borderBottom: '2px solid orange', outline: 'none',padding: '5px 0',borderRadius:0}} 
               type='text'/> :
               <h5 className='text-warning'>{u.title}</h5> }</h6>
             
@@ -182,7 +182,7 @@ const App = () => {
               {editId===u._id ?(
                 <input value={editDescription}
                 onChange={(e)=>setEditDescription(e.target.value)}
-                type='text' style={{color:'white',backgroundColor:'transparent',border: 'none',borderBottom: '2px solid orange', outline: 'none',padding: '5px 0',borderRadius:0}}/>)
+                type='text' style={{color:'white',backgroundColor:'transparent',border: 'none',borderBottom: '2px solid orange', outline: 'none',padding: '5px 0',borderRadius:0,width:'90%'}}/>)
               : <p>{u.description}</p>}
              </p>
           </div>
