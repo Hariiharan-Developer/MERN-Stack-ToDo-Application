@@ -13,7 +13,7 @@ const App = () => {
   const [editTitle,setEditTitle] =useState('')
   const [editDescription,setEditDescription] =useState('')
 
-  const api = 'http://localhost:4000'
+  const api = 'https://mern-stack-todo-application.onrender.com'
 
   //get taske :
   useEffect(()=>{
