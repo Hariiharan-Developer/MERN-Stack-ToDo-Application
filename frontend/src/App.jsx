@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react'
+import Spinner from './Spinner'
 
 
 
@@ -12,11 +13,13 @@ const App = () => {
   const [success,setSuccess] =useState('')
   const [editTitle,setEditTitle] =useState('')
   const [editDescription,setEditDescription] =useState('')
+  const [isLoading,setIsLoading] = useState(false)
 
   const api = 'https://mern-stack-todo-application.onrender.com'
 
   //get taske :
   useEffect(()=>{
+    setIsLoading(true)
     fetch(api+'/api/todo')
     .then((res)=>res.json())
     .then((data)=>{
@@ -33,6 +36,7 @@ const App = () => {
         setError(error.message)
       }, 3000);
     })
+    .finally(()=>setIsLoading(false))
     
   },[])
 
@@ -45,6 +49,7 @@ const App = () => {
         setError('')
       }, 3000);
     }
+    setIsLoading(true)
     fetch(api+'/api/todo' ,{
       method:'POST',
       headers:{'Content-Type':'application/json'},
@@ -67,6 +72,7 @@ const App = () => {
         setError('')
       },3000)
     })
+    .finally(()=>setIsLoading(false))
   }
   
 
@@ -78,6 +84,7 @@ const App = () => {
         setError('')
       },3000)
     }
+    setIsLoading(true)
     fetch(api+'/api/todo/'+editId,{
       method:'PUT',
       headers:{'Content-Type':'application/json'},
@@ -103,7 +110,7 @@ const App = () => {
       setTimeout(() => {
         setError('')
       }, 3000);
-    })
+    }).finally(()=>setIsLoading(false))
 
   }
 
@@ -120,6 +127,7 @@ const App = () => {
   //deleteButton:
 
   const deleteTodo =(id)=>{
+    setIsLoading(true)
     fetch(api+'/api/todo/'+id,{
       method:'DELETE',
     }).then((res)=>res.json())
@@ -139,7 +147,10 @@ const App = () => {
       setTimeout(() => {
         setError('')
       }, 3000);
-    })
+    }).finally(()=>setIsLoading(false))
+  }
+  if(isLoading){
+    return <Spinner/>
   }
 
   return (
